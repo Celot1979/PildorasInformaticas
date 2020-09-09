@@ -14,10 +14,10 @@ class Agenda():
 			['3. Buscar contacto'],
 			['4. Editar contacto'],
 			['5. Borrar contacto'],
-			['6. Cerrar agenda']
+			['6. Cerrar agenda'],
 		]
 
-		for x in range(6):
+		for x in range(7):
 			print(menu[x][0])
 
 		opcion=int(input("Introduzca la opción deseada: "))
