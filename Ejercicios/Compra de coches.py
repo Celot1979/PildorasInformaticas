@@ -69,6 +69,5 @@ print(cliente1)
 modelo1= Modelos()
 print(modelo1)
 
-venta1 = Ventas("Dani", 41, 2345)
-print(venta1)
+
 
