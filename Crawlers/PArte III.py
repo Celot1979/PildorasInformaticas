@@ -1,8 +1,19 @@
 from bs4 import BeautifulSoup
 docu = """
 <html>
+
+      <style>
+        .pImportante{
+            color:red;
+
+
+
+
+        }
+
+      </style>
       <body>
-         <p> Este es le primer párrago </p>
+         <p class='pImportante'> Este es le primer párrago </p>
 
           <p> Este es le segundo párrago </p>
 
@@ -15,7 +26,7 @@ docu = """
 
 final= BeautifulSoup(docu, "html.parser")
 for parrafo in final.find_all("p"):
+    print(parrafo.attrs)
     print(parrafo.text)
 
 print(final)
-
