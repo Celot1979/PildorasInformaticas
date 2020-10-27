@@ -26,6 +26,7 @@ class CuentaCorriente():
     def getter(self):
         print( "El numero de la cuenta es: " + str(self.cuenta) + " El titular es: " + self.titular + " Su saldo es de: " + str(self.saldo))
     
+    
     def ingresar(self):
         self.ingresar = int(input(" ¿Cuánto desea ingresar?  :"))
         self.ingre.append(self.ingresar)
@@ -34,8 +35,8 @@ class CuentaCorriente():
         #print(self.ingre)
         for i in range(len(self.sal)):
             self.despues.append(self.sal[i] + self.ingre[i])
-            #Tenemos dos listas las cuales queremos sumar los lementos de ambas. 
-            #Para eso creamo una nueva lista que alojará la suma de ambas -despues= [] -
+        #Tenemos dos listas las cuales queremos sumar los lementos de ambas. 
+        #Para eso creamo una nueva lista que alojará la suma de ambas -despues= [] -
         self.men = "".join([str(_) for _ in self.despues])
         #Luego convertimo esa nueva lista, en una cadena para poder al final cambiar el valor de la lista sal por el nuevo 
         #Eso siempre nos permitiría poder operar con la lista base del programa que es - sal =[] -
