@@ -1,0 +1,2 @@
+Estamos en clase aprendiendo a crear un archivo de texto
+ Ahora vamos a usar la función -a- para añadir este texto
