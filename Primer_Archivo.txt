@@ -1,2 +1,4 @@
-Estamos en clase aprendiendo a crear un archivo de texto
- Ahora vamos a usar la función -a- para añadir este texto
+
+Vamos a cambiar esta frase para hacer el ejercicio 2Con el cambio de - w- a -a- podemos modificar el archivo de texto.Siguiente video.
+Estamos manipulando el texto para la siguiente lección
+Está nueva lección va sobre cómo manejar el cursor en los archivos de texto. Método -seek--
