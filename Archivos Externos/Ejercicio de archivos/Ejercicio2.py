@@ -25,7 +25,7 @@ archivo.seek(0)
 archivo.writelines(texto)
 archivo.close()  """
 #print(texto[1])
-texto[1]="\nEstá linea es la que realizará el cambio\n"
+texto[1]="\nEstoy probando nuevamente que se meta en la linea 2\n"
 archivo.seek(0)
 archivo.writelines(texto)
 archivo.close()

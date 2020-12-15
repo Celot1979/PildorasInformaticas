@@ -1,0 +1,5 @@
+Primera línea, apertura y método write
+
+Estoy probando nuevamente que se meta en la linea 2
+Estamos manipulando el texto para la siguiente lección.
+Está nueva lección va sobre como manejar el cursor en los archivos de texto.

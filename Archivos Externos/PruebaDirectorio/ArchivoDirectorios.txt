@@ -1,0 +1,1 @@
+Es un ejemplo de como se debe de hacer para crear un archivo en un directorio
