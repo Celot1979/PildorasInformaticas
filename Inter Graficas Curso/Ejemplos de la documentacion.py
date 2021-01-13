@@ -1,29 +1,28 @@
 import tkinter as tk
 
-class App(tk.Frame):
-    def __init__(self, master):
-        super().__init__(master)
-        self.pack()
 
-        self.entrythingy = tk.Entry()
-        self.entrythingy.pack()
+def aceptar():
+    try:
+        n = int(var_texto.get())  # Obtenemos el número de la StringVar
+    except ValueError:            # Si lo ingresado no es un entero
+        var_lbl.set(f"No escogiste un número válido")
+    else:                         # Si lo ingresado es un entero
+        var_lbl.set(f"Escogiste el número: {n}")
 
-        # Create the application variable.
-        self.contents = tk.StringVar()
-        # Set it to some value.
-        self.contents.set("this is a variable")
-        # Tell the entry widget to watch this variable.
-        self.entrythingy["textvariable"] = self.contents
-
-        # Define a callback for when the user hits return.
-        # It prints the current value of the variable.
-        self.entrythingy.bind('<Key-Return>',
-                             self.print_contents)
-
-    def print_contents(self, event):
-        print("Hi. The current entry content is:",
-              self.contents.get())
 
 root = tk.Tk()
-myapp = App(root)
-myapp.mainloop()
+
+var_texto = tk.StringVar()
+var_lbl = tk.StringVar()
+
+mi_label = tk.Label(root, textvariable=var_lbl)
+var_lbl.set("Escoge un número") # Contenido inicial del Lable
+mi_label.grid(row=0, column=0, columnspan=3)
+
+cuadro_texto = tk.Entry(root, textvariable=var_texto)
+cuadro_texto.grid(row=1, column=0, columnspan=2)
+
+btn_aceptar = tk.Button(root, text="Aceptar", command=aceptar)
+btn_aceptar.grid(row=1, column=2)
+
+root.mainloop()
