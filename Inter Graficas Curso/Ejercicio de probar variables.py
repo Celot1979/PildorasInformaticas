@@ -1,6 +1,5 @@
 from tkinter import*
 from tkinter import messagebox as MessageBox
-from tkinter import messagebox as mb
 raiz = Tk()
 miFrame= Frame(raiz, width=1000, height=550)
 miFrame.pack()
@@ -27,6 +26,15 @@ cuadroTextoNombre.config(fg="red")
 #Mientras, en los demás Entrys, seguirá siendo en negro
 
 #---------------------------------------------------------------------------------------------------------------------------------
+#--
+# 
+# --------------------------------------------- VARIABLE STRING APELLIDOS ------------------------------------------------------
+
+miVariableApellidos = StringVar()
+
+
+
+#---------------------------------------------------------------------------------------------------------------------------------
 
 
 
@@ -34,10 +42,17 @@ cuadroTextoNombre.config(fg="red")
 nombreLabelApellidos= Label(miFrame, text="Apellidos: ")
 nombreLabelApellidos.grid(row=1, column=0, sticky=W)
 
-cuadroTextoApellidos=Entry(miFrame)
+cuadroTextoApellidos=Entry(miFrame, textvariable= miVariableApellidos)
 cuadroTextoApellidos.grid(row=1, column=1, padx=15, pady=15)
 #---------------------------------------------------------------------------------------------------------------------------------
 
+#----------------------------------------------- VARIABLE STRING CONTRASEÑA ------------------------------------------------------
+
+miVariableContraseña = StringVar()
+
+
+
+#---------------------------------------------------------------------------------------------------------------------------------
 
 
 
@@ -47,11 +62,18 @@ cuadroTextoApellidos.grid(row=1, column=1, padx=15, pady=15)
 nombreLabelContraseña= Label(miFrame, text="Contraseña: ")
 nombreLabelContraseña.grid(row=2, column=0, sticky=W)
 
-cuadroTextoContraseña=Entry(miFrame)
+cuadroTextoContraseña=Entry(miFrame, textvariable= miVariableContraseña)
 cuadroTextoContraseña.grid(row=2, column=1, padx=15, pady=15)
 cuadroTextoContraseña.config(show="*")
 #---------------------------------------------------------------------------------------------------------------------------------
 
+#----------------------------------------------- VARIABLE STRING DIRECCION ------------------------------------------------------
+
+miVariableDireccion = StringVar()
+
+
+
+#---------------------------------------------------------------------------------------------------------------------------------
 
 
 
@@ -60,10 +82,17 @@ cuadroTextoContraseña.config(show="*")
 nombreLabeDireccion = Label(miFrame, text="Dirección: ")
 nombreLabeDireccion.grid(row=3, column=0, sticky=W)
 
-cuadroTextoDireccion=Entry(miFrame)
+cuadroTextoDireccion=Entry(miFrame, textvariable= miVariableDireccion)
 cuadroTextoDireccion.grid(row=3, column=1, padx=15, pady=15)
 #---------------------------------------------------------------------------------------------------------------------------------
 
+#----------------------------------------------- VARIABLE STRING EMAIL ------------------------------------------------------
+
+miVariableEmail = StringVar()
+
+
+
+#---------------------------------------------------------------------------------------------------------------------------------
 
 
 #----------------------------------------------- LABEL Y ENTRY DE EMAIL ------------------------------------------------------
@@ -71,10 +100,18 @@ cuadroTextoDireccion.grid(row=3, column=1, padx=15, pady=15)
 nombreLabeEmail = Label(miFrame, text="Email: ")
 nombreLabeEmail.grid(row=4, column=0, sticky=W)
 
-cuadroTextoEmail=Entry(miFrame)
+cuadroTextoEmail=Entry(miFrame, textvariable= miVariableEmail)
 cuadroTextoEmail.grid(row=4, column=1, padx=15, pady=15)
 #---------------------------------------------------------------------------------------------------------------------------------
 
+#----------------------------------------------- VARIABLE STRING COMENTARIOS / FUNCION ------------------------------------------------------
+
+miVariableComentarios = StringVar()
+
+
+
+
+#---------------------------------------------------------------------------------------------------------------------------------
 
 
 #----------------------------------------------- LABEL Y ENTRY DE CAJA DE TEXTO (para añadir el widget de texto) ------------------------------------------------------
@@ -82,8 +119,8 @@ cuadroTextoEmail.grid(row=4, column=1, padx=15, pady=15)
 nombreLabeComentarios = Label(miFrame, text="Comentarios: ")
 nombreLabeComentarios.grid(row=5, column=0, sticky=W)
 
-cuadroTextoComentarios= Text(miFrame, width= 26, height= 30)
-cuadroTextoComentarios.grid(row=5, column=1, padx=15, pady=15)
+cuadroTextoComentarios= Text(miFrame,  width= 26, height= 30)
+cuadroTextoComentarios.grid(row=5, column=2, padx=15, pady=15)
 
 #Añadir una barra vertical para poder desplazarse en la caja texto
 miScrollVertical= Scrollbar(miFrame, command=cuadroTextoComentarios.yview)
@@ -95,17 +132,13 @@ cuadroTextoComentarios.config(yscrollcommand= miScrollVertical.set)
 #----------------------------------------------- BUTTON y APLICACION ------------------------------------------------------
 def funcionBoton():
     
-    #print(miVariableNombre.get())
-    mb.showinfo("información rescatada" , cuadroTextoNombre.get() + " " + cuadroTextoApellidos.get() + " " + cuadroTextoContraseña.get())
-
-def LeerTexto():
-    mb.showinfo("El texto es: ",cuadroTextoComentarios.get("1.0",END))
+    print("El nombre es :" + miVariableNombre.get() + "\nSus apellidos: " + miVariableApellidos.get() + 
+    "\nLa contraseña: " + miVariableContraseña.get() + "\nLa dirección: " + miVariableDireccion.get() +
+    "\nEl email: " + miVariableEmail.get())
 
 
+    
 botonEnviar= Button(raiz, text = "Enviar", command= funcionBoton)
 botonEnviar.pack()
-
-botonTexto= Button(raiz, text = "Texto", command= LeerTexto)
-botonTexto.pack()
 
 raiz.mainloop()
