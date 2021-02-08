@@ -7,14 +7,14 @@ import  csv
 
 root = Tk()
 root.title("PROTECTORA")
-root.geometry("700x350")
-root.config(background="thistle2")
+root.geometry("5000x5000")
+
 
 #Imagen de fondo
 
-#imagen = PhotoImage(file="/Users/danielgil/Desktop/Curso_Python/Proctetora2.png")
-#Imagen_2 =Label(root, image=imagen)
-#Imagen_2.place(x=180, y=220)
+imagen = PhotoImage(file="/Users/danielgil/Desktop/Curso_Python/Proctetora.png")
+Imagen_2 =Label(root, image=imagen)
+Imagen_2.place(x=550, y=220)
 
 
 
@@ -39,8 +39,8 @@ def Segunda_Ventana():
     root.iconify()
     ventana2=Toplevel()
     ventana2.title("Menu")
-    ventana2.geometry("700x350")
-    ventana2.config(background="thistle2")
+    ventana2.geometry("5000x5000")
+    
     #label_menu= Label(ventana2, text="MENU", background="thistle2", font=("Arial",30))
     #label_menu.place(x=300, y=0)
     menubar = Menu(ventana2)
@@ -69,7 +69,7 @@ def Segunda_Ventana():
         #Ventana nueva donde se hará rellenará los datos del animal adoptado
         entrada = Toplevel()
         entrada.title("Bienveni@ a nuestra casa")
-        entrada.geometry("700x350")
+        entrada.geometry("5000x5000")
         entrada.config(background="thistle2")
         # Label de la página con sus configuraciones
         id= Label(entrada, text ="ID")
@@ -132,6 +132,7 @@ def Segunda_Ventana():
         
         fecha_txt= Entry(entrada, width=20, textvariable=fecha_animal)
         fecha_txt.place(x=200, y=180)
+        
 
         ano_txt= Entry(entrada, width=20, textvariable=ano_animal)
         ano_txt.place(x=200, y=210)
@@ -190,20 +191,19 @@ def Segunda_Ventana():
 
 #################################################    PANTALLA PRINCIPAL   ############################################################################################################################################################
 #################################################                         ###########################################################################################################################
-label_cuenta= Label(root, text="CUENTA USUARIO", background="thistle2", font=("Arial",30))
-label_cuenta.place(x=180, y=0)
 
-label_nombre= Label(root, text="Nombre",background="thistle2", font=("Arial",12))
-label_nombre.place(x=100, y=80)
 
-label_password = Label(root, text="Contraseña",background="thistle2", font=("Arial",12))
-label_password.place(x=100, y=120)
+label_nombre= Label(root, text="Nombre",background="azure", font=("Arial",18))
+label_nombre.place(x=800, y=80)
 
-entry_nombre= Entry(root, width=20, textvariable=nombre)
-entry_nombre.place(x=200, y=86)
+label_password = Label(root, text="Contraseña",background="azure", font=("Arial",18))
+label_password.place(x=800 ,y=120)
 
-entry_password= Entry(root, width=20)
-entry_password.place(x=200, y=120)
+entry_nombre= Entry(root, width=20, textvariable=nombre,background="azure")
+entry_nombre.place(x=1000, y=84)
+
+entry_password= Entry(root, width=20,background="azure")
+entry_password.place(x=1000, y=118)
 entry_password.config(show="*")
 ######################################## VALIDAR LOS CAMPOS EN PAGINA PRINCIPAL ########################################################## 
 def validar():
@@ -214,15 +214,15 @@ def validar():
     else:
         mb.showerror("No es la contraseña correcta")
 
-boton_nombre= Button(root, text="VALIDAR", command=validar)
-boton_nombre.place(x=150, y=180)
+boton_nombre= Button(root, text="CONECTAR", command=validar)
+boton_nombre.place(x=800, y=180)
 #boton_nombre.config(background="thistle2")
 ######################################## BORRAR CAMPOS DE LA PÁGINA PRINCPIAL ########################################################## 
 def borrar():
     entry_nombre.delete(0, END)
     entry_password.delete(0, END)
 boton_nombre_borrar= Button(root, text="BORRAR", command=borrar, activebackground="#F50743")
-boton_nombre_borrar.place(x=250, y=180)
+boton_nombre_borrar.place(x=1000, y=180)
 #boton_nombre.config(background="thistle2")
 
 
@@ -233,7 +233,7 @@ def salir_principal():
         """Función para que al presionar el boton salir en la página principal se cierre el programa"""
         
 boton_salir= Button(root, text="SALIR", command=salir_principal, activebackground="#F50743")
-boton_salir.place(x=350, y=180)
+boton_salir.place(x=1200, y=180)
 
 
 
