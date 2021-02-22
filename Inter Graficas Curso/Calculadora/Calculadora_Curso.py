@@ -12,20 +12,51 @@ display.grid(row=1, columnspan=5, pady=10)
 display.config(background="black", fg="#00db00",justify="right", width=32, font=("Arial",18))
 #Display está justamente para darle un color negro de fondo, una letra verde
 # y una justificación a la derecha
-
-
+# ---------------------------- Aparicion del CERO autmomaticamente al iniciar la calculadora -------------------------------------------------
+digitoDisplay.set("0")
+#Tenemos que tener en cuenta que realizado esté paso, efectivamente 
+#al comenzar el programa se pone - 0 - , pero no desaparece al escribir
+#el siguiente número. Se une con lo que se hace en el else de pulsacionesTeclas.
 # ---------------------------- Pulsaciones numeros -------------------------------------------------
 
 def pulsacionesTeclas(numPulsado):
     global operacion
     if operacion != "":
+        
         digitoDisplay.set(numPulsado)
         operacion = ""
     else:
-        digitoDisplay.set(digitoDisplay.get() + numPulsado)
+        if numPulsado == "0" and digitoDisplay.get() == "0":
+            digitoDisplay.set("0")
+            #Solución para que el usuario no introduzca una línea de ceros sin sentindo
+            """ 1. Mira ver si el número qu esta pulsando el usuario es un cero
+                2. Pero también mirame si lo que tenemos en pantalla es un cero.
+                3. Es como si se hubiera encendido la calculadora
+                al tener el (digitoDisplay.get())- puesto que hace que salga
+                en el Entry un cero nada más encender la calculadora-.
+                
+                Pero a la vez (and) es que si el usuario esta tecleando más veces el cero.
+                Dentro del condicional: Está diciendo: que deje sólo un solo cero. """
+        elif numPulsado == "," and digitoDisplay.get() == 0:
+            digitoDisplay.set(digitoDisplay.get() + numPulsado)
+        
+        
+        elif numPulsado != "0" and digitoDisplay.get() == 0:
+            digitoDisplay.set(numPulsado)
+            #Solución para que cuando se encienda la calculadora, una vez que salga
+            #el cero, al escribir el siguiente número se quite el cero y sólo salga el
+            #número pulsado.
+            """ 1º. Le está diciendo en la 1ª parte del elif==>
+            Mira ver si el número que está introducciendo el usario es distinto a cero
+                2º. A la vez, que en el Enry esté el cero escrito.
+                3º Si es así; entonces quita el cero, e introducce el número pulsado """
+        
+
+        else:
+            digitoDisplay.set(digitoDisplay.get() + numPulsado)
     """El metodo set sabemos que es para introduccir datos en el entry.
     A continuación usamos el metodo get para que lea que hay en el display del entry,
-    y como la función está sólo asociada al 7, si pulsamos otra vez el 7 lo escribirá a 
+    y como la función está sólo asociada a los números, si pulsamos otra vez, lo escribirá a 
     continuación del último número escrito. """
 # ---------------------------- Función suma --------------------------------------------------------
 def suma(num):
