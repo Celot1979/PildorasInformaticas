@@ -1,4 +1,9 @@
 import random
+#@Author: Daniel Gil
+#@param: Constructor
+#@param: Métodos
+#@return: Mensajes por consola de las acciones que el programa vaya ejecutando
+#@Version: 7.0
 class Ruleta:
     def __init__(self, nu, co):
         self.numero = nu
