@@ -3,100 +3,65 @@ raiz = Tk()
 miFrame = Frame(raiz)
 miFrame.pack()
 digitoDisplay= StringVar()
-#Creamos una varible para realizar operaciones matemáticas 
+
 operacion=""
-#Creamos otra variable que será donde se vayan acumulando las cifras de las operaciones
+
 resultado =0
-coma = False #1º Paso para la tecla -coma-
+coma = False 
 display = Entry(miFrame, textvariable=digitoDisplay, font="Arial 18")
 display.grid(row=1, columnspan=5, pady=10)
 display.config(background="black", fg="#00db00",justify="right", width=32, font=("Arial",18))
-#Display está justamente para darle un color negro de fondo, una letra verde
-# y una justificación a la derecha
+
 # ---------------------------- Aparicion del CERO autmomaticamente al iniciar la calculadora -------------------------------------------------
 digitoDisplay.set("0")
-#Tenemos que tener en cuenta que realizado esté paso, efectivamente 
-#al comenzar el programa se pone - 0 - , pero no desaparece al escribir
-#el siguiente número. Se une con lo que se hace en el else de pulsacionesTeclas.
-# ---------------------------- Función alternatica para la coma -------------------------------------------------
-
-def pulsacion_coma():
-    contador = 0
-    for i in digitoDisplay.get():
-        if i == ".":
-            contador = 1
-    if contador == 0:
-        digitoDisplay.set(digitoDisplay.get() + ".")
-
-
-
-
-
-
-
-
+#
 # ---------------------------- Pulsaciones numeros -------------------------------------------------
 
 def pulsacionesTeclas(numPulsado):
-    global operacion #Variable que está fuera de la función y se le llama de está forma
-    global coma #Variable que está fuera de la función y se le llama de está forma
+    global operacion 
+    global coma 
     if operacion != "":
         
         digitoDisplay.set(numPulsado)
-        operacion = ""
+        operacion = " "
     else:
         if numPulsado == "0" and digitoDisplay.get() == "0":
             digitoDisplay.set("0")
-            #Solución para que el usuario no introduzca una línea de ceros sin sentindo
-            """ 1. Mira ver si el número qu esta pulsando el usuario es un cero
-                2. Pero también mirame si lo que tenemos en pantalla es un cero.
-                3. Es como si se hubiera encendido la calculadora
-                al tener el (digitoDisplay.get())- puesto que hace que salga
-                en el Entry un cero nada más encender la calculadora-.
-                
-                Pero a la vez (and) es que si el usuario esta tecleando más veces el cero.
-                Dentro del condicional: Está diciendo: que deje sólo un solo cero. """
+            
         elif numPulsado == "." and digitoDisplay.get() == "0":
             digitoDisplay.set(digitoDisplay.get() + numPulsado)
-            coma = True
         
         
         elif numPulsado != "0" and digitoDisplay.get() == "0":
             digitoDisplay.set(numPulsado)
-            #Solución para que cuando se encienda la calculadora, una vez que salga
-            #el cero, al escribir el siguiente número se quite el cero y sólo salga el
-            #número pulsado.
-            """ 1º. Le está diciendo en la 1ª parte del elif==>
-             Mira ver si el número que está introducciendo el usario es distinto a cero
-             2º. A la vez, que en el Enry esté el cero escrito.
-             3º Si es así; entonces quita el cero, e introducce el número pulsado """
+            
         
 
-        elif numPulsado == "." and coma == False:#2º Punto para que no se pueda introduccir una 2ª coma en el Display
-            digitoDisplay.set(digitoDisplay.get() + numPulsado)
-            coma = True
-        elif numPulsado != "." and coma == True:
-            digitoDisplay.set(digitoDisplay.get() + numPulsado)
+        else:
+            if numPulsado == "." and coma == False:
+                digitoDisplay.set(digitoDisplay.get() + numPulsado)
+                coma = True
+            else:
+                if numPulsado == "." and coma == False:
+                    digitoDisplay.set(digitoDisplay.get() + numPulsado)
+                    coma = True
+                elif numPulsado != "." and coma == True:
+                    digitoDisplay.set(digitoDisplay.get() + numPulsado)
 
-        #Este número elif sería para hacer que pueda escribir un seguno número. Después de arreglar las comas multiples habíamos tenido este problema .
 
-        elif numPulsado != "." and coma == True:
-            digitoDisplay.set(digitoDisplay.get() + numPulsado)
 # ---------------------------- Función suma --------------------------------------------------------
 def suma(num):
-    """Pasamos por parámetro un texto(que aunque númerico, es texto).Esto se realiza en 
-    5º paso, cuadno queremos que las cifras que se escriben se alojen en algún lado"""
+    
     global operacion
-    global resultado#5º Paso
-    resultado+=float(num)#5º pasoQue sume lo que se almacena por parámetro a la variable resultado
-    digitoDisplay.set(resultado)#5º. Que introduzca al Entry el contenido de la variable resultado
+    global resultado
+    resultado+=int(num)
+    digitoDisplay.set(resultado)
     operacion = "suma"
-    #global sirve para almacenar en una variable que está fuera de la función. Por
-    #eso usaremos global con operacion.
+    
 # ---------------------------- Función igual --------------------------------------------------------
 def total():
-    global resultado#PAra que use la varible fuera de la función
-    digitoDisplay.set(resultado + float(digitoDisplay.get()))
+    global resultado
+    digitoDisplay.set(resultado + int(digitoDisplay.get()))
     """En la siguiente sentencia le está diciendo que introduzca al Entry lo
     acumulado en el resultado más el valor entero de lo que hay en ese momento en el digitoDisplay
     """
@@ -152,7 +117,7 @@ botonRes.grid( row=4, column=4)
 boton0= Button(miFrame, text="0", width=6, command= lambda: pulsacionesTeclas("0"))
 boton0.grid( row=5, column=1)
 
-botonComa= Button(miFrame, text=".", width=6, command= lambda: pulsacion_coma())
+botonComa= Button(miFrame, text=".", width=6, command= lambda: pulsacionesTeclas("."))
 botonComa.grid( row=5, column=2)
 
 botonIgual= Button(miFrame, text="=", width=6, command= lambda: total())
