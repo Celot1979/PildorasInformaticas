@@ -23,4 +23,11 @@ for nombre in lista_terminos:
     if re.findall("cami[oó]n",nombre):
         print(nombre)
 
+
 print("----------------------------------------------------------------")
+print("Metacaracter para comparar si existen dos coincidencias en la cadena  a|b")
+lista_terminos =["camión", "camion","niños","niñas","ejemplo"]
+
+for nombre in lista_terminos:
+    if re.findall("(ejemplo)",nombre):
+        print(nombre)
