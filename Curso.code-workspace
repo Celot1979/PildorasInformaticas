@@ -6,7 +6,7 @@
 	],
 	"settings": {
 		"git.ignoreLimitWarning": true,
-		"python.pythonPath": "C:\\Users\\zata_\\AppData\\Local\\Programs\\Python\\Python38\\python.exe",
+		"python.pythonPath": "/usr/bin/python3",
 		"editor.fontSize": 14
 	}
 }
