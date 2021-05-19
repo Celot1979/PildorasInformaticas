@@ -4,7 +4,7 @@ def funcion_decoradora(funcion_parametro):
         funcion_parametro(*args, **kwargs)
         print("Ya he terminado el trabajo")
 
-    return funcion_interna()
+    return funcion_interna
 
 
 @funcion_decoradora
