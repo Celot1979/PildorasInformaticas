@@ -6,7 +6,8 @@ miCursor = miConexion.cursor()
 miCursor.execute("SELECT * FROM PRODUCTOS")
 
 muchosProductos = miCursor.fetchall()
-print(muchosProductos)
+for p in muchosProductos:
+    print(p)
 
 miCursor.close()
 miConexion.close()
