@@ -108,9 +108,6 @@ while len(lista) <= 9:
                     pedido -= 1
                     pescados -= 1
                     pes = True
-                
-       
-        
     else:
         pedido = 10
         break
